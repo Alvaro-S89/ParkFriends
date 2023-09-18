@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('title')
+    Página principal
+@endsection('title')
 
-WELCOME
-
+@section('content')
+    Contenido
 @endsection('title')
