@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/create-account', [RegisterController::class, 'index']);
+Route::post('/create-account', [RegisterController::class, 'store']);
