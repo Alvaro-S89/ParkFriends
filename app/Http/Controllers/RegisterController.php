@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+use function Laravel\Prompts\password;
+
 class RegisterController extends Controller
 {
     public function index() 
@@ -33,6 +35,13 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make( $request->password )
         ]);
+        // auth()->attempt([
+        //     'email'=> $request->email,
+        //     'password'=> $request->password
+        // ]);
+        auth()->attempt($request->only('email','password'));
+
+        return redirect()->route('posts.index'); 
     }
 }
 
