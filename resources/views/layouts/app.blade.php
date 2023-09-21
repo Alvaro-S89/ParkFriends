@@ -13,11 +13,12 @@
         <header class="p-5 border-b bg-white shadow">
             <div class="container mx-auto flex justify-between items-center">
                 <h1 class="text-3xl font-black">
-                    ParkFriends
+                    <a href="/login">ParkFriends</a>
+                    
                 </h1>
 
                 <nav class="flex gap-2 items-center">
-                    <a href="#" class="font-bold uppercase text-gray-600 text-sm">Login</a>
+                    <a href="/login" class="font-bold uppercase text-gray-600 text-sm">Login</a>
                     <a href="/create-account" class="font-bold uppercase text-gray-600 text-sm">Crear cuenta</a>
                 </nav>
                 
@@ -28,7 +29,7 @@
             <h1 class="font-black text-center text-4xl mb-10">
                 @yield('title')
             </h1>
-            <div class=" flex items-center justify-center md:flex md:items-center md:justify-center">
+            <div>
             @yield('content')
         </div>
 

@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    <div class=" flex items-center justify-center md:flex md:items-center md:justify-center">
         <div class="md:w-4/12 md:flex md:justify-center md:items-center bg-white p-6 rounded-lg shadow-2xl">
             <form action="/create-account" method="POST">
                 @csrf
@@ -88,4 +89,5 @@
                 >
             </form>
         </div>
+    </div>
 @endsection
