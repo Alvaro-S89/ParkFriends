@@ -18,8 +18,19 @@
                 </h1>
 
                 <nav class="flex gap-2 items-center">
-                    <a href="/login" class="font-bold uppercase text-gray-600 text-sm">Login</a>
-                    <a href="/create-account" class="font-bold uppercase text-gray-600 text-sm">Crear cuenta</a>
+                    @auth
+                    <a href="#">
+                        <img src="{{ asset('img/user.png')}}" class="w-10 h-10" alt="user">
+                    </a>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button type="submit" class="font-bold uppercase text-gray-600 text-sm">Logout</button>
+                    </form>
+                        @endauth
+                    @guest
+                        <a href="/login" class="font-bold uppercase text-gray-600 text-sm">Login</a>
+                        <a href="/create-account" class="font-bold uppercase text-gray-600 text-sm">Crear cuenta</a>
+                    @endguest
                 </nav>
                 
             </div>
