@@ -4,13 +4,18 @@
     crea un post nuevo
 @endsection
 
+@push('styles')
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+@endpush
+
 @section('content')
+
     <div class="md:flex md:items-center">
         <div class="md:w-1/2 px-10">
-            <label class="flex flex-col justify-center items-center"> 
-                <img class='w-80 h-80 cursor-pointer' src="{{ asset('img/puppys.png')}}" alt="add-post" />
-                <input type="file" class='hidden' />
-            </label>
+            <form action="/images" method="POST" enctype="multipart/form-data" id="dropzone" 
+            class="dropzone border border-black w-full h-96 rounded flex flex-col justify-center items-center">
+                @csrf
+            </form>
         </div>
 
         <div class="md:w-1/2 px-10 bg-white p-6 rounded-lg shadow-2xl mt-10 md:mt-0">
@@ -34,9 +39,9 @@
                         Descripción
                     </label>
                     <textarea class="border border-black p-2 w-full rounded"
-                    id="description" 
-                    name="description" 
-                    placeholder="Escribe una descripción"
+                        id="description" 
+                        name="description" 
+                        placeholder="Escribe una descripción"
                     >{{ old('title')}}</textarea>
                 </div>
 
