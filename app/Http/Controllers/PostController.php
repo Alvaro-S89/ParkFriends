@@ -15,8 +15,11 @@ class PostController extends Controller
 
     public function index(User $user)
     {
+        $posts = Post::where('user_id', $user->id)->simplePaginate(25);
+
         return view('dashboard', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts
         ]);
     }
 
@@ -32,7 +35,7 @@ class PostController extends Controller
             'description' => 'required'
         ]);
 
-        Post::create([
+        $request->user()->posts()->create([
             'title' => $request->title,
             'description' => $request->description,
             'image' => $request->postImage,
