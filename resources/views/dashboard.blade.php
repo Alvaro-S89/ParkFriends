@@ -2,11 +2,11 @@
 
 @section('title')
     {{$user->username}}
-@endsection('title')
+@endsection
 
 @section('content')
 
-    <div class="flex justify-center">
+    <section class="container flex justify-center">
         <div class="w-full md:w-8/12 lg:w-6/12 flex flex-col items-center md:flex-row">
             <div class="w-8/12 lg:w-6/12 px-5">
                 <img src="{{ $user->image ? asset('profiles') . '/' . $user->image : asset('img/user.png')}}" alt="user" class="rounded-full">
@@ -41,9 +41,33 @@
                     {{ $user->posts->count() }}
                     <span class="font-normal">Publicaciones</span>
                 </p>
+
+                @auth
+                    @if ($user->id !== auth()->user()->id)
+                        
+                    <form action="{{ route('users.follow', $user) }}" method="POST">
+                        @csrf
+                        <input 
+                        type="submit" 
+                        class="bg-green-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
+                        value="Seguir"
+                        >
+                    </form>
+                    
+                    <form action="" method="POST">
+                        @csrf
+                        <input 
+                        type="submit" 
+                        class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"
+                        value="Dejar de seguir"
+                        >
+                    </form>
+
+                    @endif
+                @endauth
             </div>
         </div>
-    </div>
+    </section>
 
     <section class="container mx-auto mt-10">
         <h2 class="text-4xl text-center font-black my-10">Publicaciones</h2>
@@ -69,4 +93,4 @@
         @endif
     </section>
     
-@endsection('title')
+@endsection
