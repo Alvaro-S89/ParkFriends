@@ -26,7 +26,7 @@
                             Crear
                         </a>
                         <a href="{{ route('posts.index', auth()->user()->username) }}">
-                            <img src="{{ $user->image ? asset('profiles') . '/' . $user->image : asset('img/user.png')}}" class="rounded-full w-10 h-10 mr-4" alt="user">
+                            <img src="{{ auth()->user()->image ? asset('profiles') . '/' . auth()->user()->image : asset('img/user.png')}}" class="rounded-full w-10 h-10 mr-4" alt="user">
                         </a>
                         <form action="/logout" method="POST">
                             @csrf

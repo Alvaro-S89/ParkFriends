@@ -2,8 +2,8 @@
 
 @section('title')
     Página principal
-@endsection('title')
+@endsection
 
 @section('content')
     Contenido
-@endsection('title')
+@endsection
